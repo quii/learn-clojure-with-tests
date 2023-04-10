@@ -16,3 +16,8 @@
 
 (deftest add-5-with-threading-macro "Test add-5 with a threading macro"
                                     (add-5-contract add-5-with-threading))
+
+(deftest add-5-with-comp "We can use comp to compose functions"
+                         (letfn [(add-2 [x] (+ x 2))
+                                 (add-3 [x] (+ x 3))]
+                           (add-5-contract (comp add-2 add-3))))
