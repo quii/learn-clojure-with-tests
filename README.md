@@ -9,3 +9,5 @@ Maybe one day, if i actually got good at Clojure
 Mini-chapter per collections func, showing how they work with tests
 
 https://guide.clojure.style/
+
+This is supposed to be idiomatic https://github.com/weavejester/medley
