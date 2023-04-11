@@ -20,6 +20,7 @@
   "another re-usable contract, with multi-arity"
   [greet-fn]
   (is (= (greet-fn) (str "Hello, World"))))
+
 (deftest greet-with-arity-test "Test greet1"
                      (testing "greeting with multiple arity"
                        (are [greeter] (can-greet-with-multi-arity greeter)
