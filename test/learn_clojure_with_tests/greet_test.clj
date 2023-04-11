@@ -16,7 +16,9 @@
                    greet3
                    greet4)))
 
-(defn greet-contract-multi-arity [greet-fn]
+(defn greet-contract-multi-arity
+  "another re-usable contract, with multi-arity"
+  [greet-fn]
   (is (= (greet-fn) (str "Hello, World"))))
 (deftest greet-with-arity-test "Test greet1"
                      (testing "greeting with multiple arity"
