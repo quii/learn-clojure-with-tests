@@ -1,4 +1,4 @@
-(ns learn_clojure_with_tests.collections
+(ns learn_clojure_with_tests.generic_collections
   (:require [clojure.test :refer :all]))
 
 (defn can-create-vector [data] (is (= data [0 1 2])))
@@ -17,3 +17,20 @@
 (deftest reducing-collections "we can reduce collections in different ways"
                               (can-sum (fn [x] (reduce + x)))
                               (can-sum (fn [x] (apply + x))))
+
+;; see here https://clojure.org/api/cheatsheet
+(def some-vec [1 2 3])
+(def some-list `(1 2 3))
+(def some-set #{1 2 3})
+(deftest count-test "we can count all collections"
+                    (is (= 3 (count some-vec)))
+                    (is (= 3 (count some-list)))
+                    (is (= 3 (count some-set))))
+
+(defn can-check-is-not-empty [col]
+  (is (not-empty col)))
+
+(deftest not-empty-test "we can check if any collection is not empty"
+                        (can-check-is-not-empty some-vec)
+                        (can-check-is-not-empty some-list)
+                        (can-check-is-not-empty some-set))
