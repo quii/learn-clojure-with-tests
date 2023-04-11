@@ -8,8 +8,8 @@
 
 (defn greet2
   "Example of greet function using str/join"
-  [name]
-  (str/join " " ["Hello," name]))
+  ([] "Hello, World")
+  ([name] (str/join " " ["Hello," name])))
 
 (defn greet3
   "Example of greet function using format"
