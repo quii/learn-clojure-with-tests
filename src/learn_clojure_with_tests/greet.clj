@@ -1,19 +1,22 @@
 (ns learn-clojure-with-tests.greet
   (:require [clojure.string :as str]))
 
-;; Example implementation of the greet function
 (defn greet1
+  "Example impl of greet function with multiple arity"
   ([] "Hello, World")
   ([name] (str "Hello, " name)))
 
-;; Another way to do a greet function
-(defn greet2 [name]
+(defn greet2
+  "Example of greet function using str/join"
+  [name]
   (str/join " " ["Hello," name]))
 
-;; Greet using fmt
-(defn greet3 [name]
+(defn greet3
+  "Example of greet function using format"
+  [name]
   (format "Hello, %s" name))
 
-;; Greet using replace (dumb but fun)
-(defn greet4 [name]
+(defn greet4
+  "Example of greet function using string replace (dumb but fun)"
+  [name]
   (str/replace "Hello, WAT" #"WAT" name))
