@@ -82,3 +82,13 @@
     (is (= [2 4 6] (map (fn [x] (* x 2)) some-vec)))
     (is (= [2 3 4] (map inc some-vec)))
     (is (= [3 6 9] (map #(* 3 %) some-vec)))))
+
+(deftest reducing "reducing sequences yay"
+  (testing "basic reduce examples"
+    (is (= 6 (reduce + some-vec)))))
+
+(deftest sorting
+  (testing "sort examples"
+    (let [col [2 3 1]]
+      (is (= [1 2 3] (sort col)))
+      (is (= [3 2 1] (sort > [2 3 1]))))))
