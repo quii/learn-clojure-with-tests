@@ -55,4 +55,30 @@
   (testing "rest"
     (are [data] (= [2 3] (rest data))
                 some-vec
-                some-list)))
+                some-list))
+  (testing "filter"
+    (are [data] (= [2] (filter even? data))
+                some-vec
+                some-list))
+  (testing "remove (opposite of filter)"
+    (are [data] (= [1 3] (remove even? data))
+                some-vec
+                some-list))
+  )
+
+(deftest predicates "every checks a collection against a predicate"
+  (testing "every?"
+    (letfn [(less-than-5? [x] (< x 5))]
+      (is (every? less-than-5? some-vec))
+      (is (every? less-than-5? some-list))))
+  (testing "some"
+    (is (some even? some-vec))
+    (is (some even? some-list)))
+  (testing "not-every"
+    (is (not-every? even? some-vec))))
+
+(deftest mapping "transforming sequences yay"
+  (testing "basic map examples"
+    (is (= [2 4 6] (map (fn [x] (* x 2)) some-vec)))
+    (is (= [2 3 4] (map inc some-vec)))
+    (is (= [3 6 9] (map #(* 3 %) some-vec)))))
