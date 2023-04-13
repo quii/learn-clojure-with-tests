@@ -1,5 +1,5 @@
 (ns learn_clojure_with_tests.sequences
-  (:require [clojure.test :refer :all]))
+  (:require [clojure.test :refer :all] [clojure.set :refer :all]))
 
 ;; sequences are the mega-abstraction around lots of data types. It has a rich library of functions that work with them.
 
@@ -119,3 +119,10 @@
       (is (= {:chris 1000 :hugo 2 :cleo 999} (assoc scores :cleo 999)))
       (is (= {:hugo 2} (dissoc scores :chris)))
       (is (= {:chris 1 :hugo 2} (merge scores {:chris 1}))))))
+
+(deftest sets
+  (testing "set operations"
+    (let [a #{1 2 3} b #{3 4 5}]
+      (is (= #{1 2 3 4 5} (union a b)))
+      (is (= #{3} (intersection a b)))
+      (is (= #{1 2} (difference a b))))))
