@@ -97,3 +97,25 @@
         (testing "peek works differently depending on the ds"
           (is (= 3 (peek [vec 1 2 3])))
           (is (= 3 (peek (list 3 2 1))))))
+
+(deftest pop-a-poo
+  (testing "pop also works differently depending on the ds"
+    (is (= [1 2] (pop [1 2 3])))
+    (is (= [2 3] (pop (list 1 2 3))))))
+
+(deftest vectors-as-functions
+  (testing "vectors can be used as functions"
+    (is (= :a ([:a :b :c] 0)))))
+
+(deftest maps
+  (testing "map keys as functions"
+    (let [team {:tom "lead", :hilverd "dev", :sharma "ux"}]
+      (is (= [:tom :hilverd :sharma] (keys team)))
+      (is (= ["lead" "dev" "ux"] (vals team)))
+      (is (= "ux" (:sharma team)))
+      (is (= false (contains? team :chris)))))
+  (testing "manipulating maps"
+    (let [scores {:chris 1000 :hugo 2}]
+      (is (= {:chris 1000 :hugo 2 :cleo 999} (assoc scores :cleo 999)))
+      (is (= {:hugo 2} (dissoc scores :chris)))
+      (is (= {:chris 1 :hugo 2} (merge scores {:chris 1}))))))
