@@ -92,3 +92,8 @@
     (let [col [2 3 1]]
       (is (= [1 2 3] (sort col)))
       (is (= [3 2 1] (sort > [2 3 1]))))))
+
+(deftest peek-a-boo
+        (testing "peek works differently depending on the ds"
+          (is (= 3 (peek [vec 1 2 3])))
+          (is (= 3 (peek (list 3 2 1))))))
