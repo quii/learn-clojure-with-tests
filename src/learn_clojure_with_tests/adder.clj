@@ -17,10 +17,13 @@
 
 (defn print-number
   [num]
-  (format "This numberr is %d" num))
+  (format "This number is %d" num))
 
 ;repl notes
 ;all are roughly around shift+option
 ;L will load file
 ;M will sync file
 ;P will send current form and run it
+;R sets namespace to current file
+
+(+ 2 2)
