@@ -22,3 +22,9 @@
   (testing "collections"
     (is (s/valid? :learn_clojure_with_tests.specs/colofcjs ["chris" "chris" "james"]))
     (is (not (s/valid? :learn_clojure_with_tests.specs/colofcjs ["chris" "james" "nicky"])))))
+
+(deftest validating-functions
+  (testing "example test of our normal func"
+    (let [rectangle {:height 6 :width 2}]
+      (testing "the area func works"
+        (is (= 12 (rectangle-area rectangle)))))))
