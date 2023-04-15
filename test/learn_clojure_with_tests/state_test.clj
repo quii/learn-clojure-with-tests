@@ -39,4 +39,5 @@
         (alter weather-list add-weather :sunny))
       (is (= (deref weather-list) [:sunny]))
       (is (thrown? Exception (dosync
-                               (alter weather-list add-weather :raining-cats-and-dogs)))))))
+                               (alter weather-list add-weather :raining-cats-and-dogs))))
+      (is (= @weather-list [:sunny])))))
