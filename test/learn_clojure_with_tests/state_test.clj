@@ -3,7 +3,7 @@
             [learn-clojure-with-tests.state :refer :all]))
 
 (deftest refs-and-transactional-memory
-  (testing "refs wrap and protect access to state"
+  (testing "refs wrap and protect access to state syncrhonously"
     (let [current-weather (ref "sunny")
           next-weather (ref "rainy")]
       (is (= (deref current-weather) "sunny"))
@@ -41,3 +41,14 @@
       (is (thrown? Exception (dosync
                                (alter weather-list add-weather :raining-cats-and-dogs))))
       (is (= @weather-list [:sunny])))))
+
+(deftest atoms-are-yolo
+  (testing "atoms dont use transactions so dont require dosync (so you cant coordinate changes like refs), but are still synchronous"
+    (let [current-weather (atom "sunny")]
+      (is (= @current-weather "sunny"))
+      (reset! current-weather "rainy")
+      (is (= @current-weather "rainy"))))
+  (testing "swap lets you update the state using the current state as an argument to your update"
+    (let [current-weather (atom {:weather "rainy" :authored "CJ"})]
+      (swap! current-weather (fn [weather] (assoc weather :weather "sunny")))
+      (is (= @current-weather {:weather "sunny" :authored "CJ"})))))
