@@ -26,4 +26,4 @@
 ;P will send current form and run it
 ;R sets namespace to current file
 
-(+ 2 2)
+(+ 2 2 2)
