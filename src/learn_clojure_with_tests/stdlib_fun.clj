@@ -28,6 +28,19 @@
 
 (threaded-cond-example 3)
 (threaded-cond-example 6)
-(threaded-cond-example 11)                                  ;; inc'd twice
+(threaded-cond-example 11)                              ;; inc'd twice
 
 ;todo: think of an example, that isn't weird an arbitary like this, but not fizzbuzz
+
+(defn cj-max [items]
+  (loop [largest-value 0 items items]
+    (if (empty? items)
+      largest-value
+      (let [item (first items)
+            new-largest-val (max item largest-value)]
+        (recur new-largest-val (rest items))))))
+
+(defn max-with-reduce [items]
+  (reduce max items))
+(cj-max [2 100 3 15])
+(max-with-reduce [2 100 3 15])
