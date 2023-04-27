@@ -43,17 +43,22 @@
 
 (defn cond-max [items]
   (loop [largest-value 0 items items]
-    (cond
-      (empty? items) largest-value
-      :else (recur
-              (max (first items) largest-value)
-              (rest items)))))
+    (cond (empty? items) largest-value
+          :else (recur (max (first items) largest-value)
+                       (rest items)))))
+
+(defn cj-max-2
+  ([items] (cj-max-2 items 0))
+  ([items largest]
+   (cond (empty? items) largest
+         :else (recur (rest items) (max (first items) largest)))))
 
 (defn max-with-reduce [items]
   (reduce max items))
 
 (def some-list [2 100 3 15 101])
 (cj-max some-list)
+(cj-max-2 some-list)
 (max-with-reduce some-list)
 (cond-max some-list)
 (cond-max [])
