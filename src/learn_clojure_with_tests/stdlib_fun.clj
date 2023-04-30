@@ -62,3 +62,8 @@
 (max-with-reduce some-list)
 (cond-max some-list)
 (cond-max [])
+
+; less than works with multiple arguments
+(< 1 2 3)
+(< 1 2 2)
+(< 1 2 1)
